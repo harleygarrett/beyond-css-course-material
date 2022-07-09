@@ -6,49 +6,79 @@ $clr-accent-400: hsl(45, 82%, 65%);
 $clr-accent-500: hsl(45, 82%, 45%);
 
 body {
-  margin: 4rem 0 0;
-  font: {
-    size: 1.25rem;
-    family: system-ui, sans-serif;
-  }
-  text-align: center;
+	margin: 4rem 0 0;
+	font: {
+		size: 1.25rem;
+		family: system-ui, sans-serif;
+	}
+	text-align: center;
 }
 
 section {
-  padding-block: 3rem;
+	padding-block: 3rem;
 }
 
 .container {
-  width: min(100% - 4rem, 50rem);
-  margin-inline: auto;
+	width: min(100% - 4rem, 50rem);
+	margin-inline: auto;
 }
 
 .surface-primary {
-  background: $clr-primary-400;
-  color: white;
+	background: $clr-primary-400;
+	color: white;
 }
 
 .surface-secondary {
-  background: $clr-secondary-400;
-  color: white;
+	background: $clr-secondary-400;
+	color: white;
 }
 
 .surface-accent {
-  background: $clr-accent-400;
-  color: black;
+	background: $clr-accent-400;
+	color: black;
 }
 
 .btn {
-  display: inline-block;
-  padding: 1em 2em;
-  cursor: pointer;
-  border: 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  // your code here
+	display: inline-block;
+	padding: 1em 2em;
+	cursor: pointer;
+	border: 0;
+	text-decoration: none;
+	text-transform: uppercase;
+	// your code here
+
+	.surface-primary &,
+	.surface-secondary & {
+		color: $clr-secondary-400;
+		background: white;
+	}
+
+	.surface-accent & {
+		background: black;
+		color: white;
+	}
+
+	&:hover,
+	&:focus {
+		background: inherit;
+		color: inherit;
+		outline: currentColor 2px solid;
+	}
 }
 
 .text-subdued {
-  font-size: 1rem;
-  // your code here
+	font-size: 1rem;
+	// your code here
+
+	.surface-primary & {
+		opacity: 0.8;
+	}
+
+	.surface-secondary & {
+		opacity: 0.7;
+	}
+
+	.surface-accent & {
+		opacity: 0.6;
+	}
 }
