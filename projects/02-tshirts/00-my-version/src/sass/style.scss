@@ -1,0 +1,187 @@
+// Variables
+// Font Families
+$ff-roboto: Roboto, sans-serif;
+
+// Font Weights
+$fw-900: 900;
+$fw-700: 700;
+$fw-400: 400;
+
+// Font Sizes
+$fs-700: 3rem;
+$fs-600: 2rem;
+$fs-500: 1.25rem;
+$fs-400: 1.125rem;
+
+// Colours
+$colour-red-400: hsla(357, 100%, 68%, 1);
+$colour-red-500: hsla(357, 74%, 40%, 1);
+$colour-blue-800: hsla(216, 71%, 16%, 1);
+$colour-neutral-100: hsl(0, 0%, 100%, 1);
+
+// Sizes
+$size-36: 3rem;
+$size-32: 2rem;
+$size-16: 1rem;
+$size-12: 0.75rem;
+$size-8: 0.5rem;
+
+// Shadows
+%shadow {
+	box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+// mixins
+@mixin interactive-scale($colour, $bg, $scale: 1.05) {
+	// transform: scale(1);
+	scale: 1;
+	transition: scale 350ms ease;
+
+	&:hover,
+	&:focus {
+		// transform: scale($scale);
+		scale: $scale;
+		color: $colour;
+		background-color: $bg;
+	}
+}
+
+// reset
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+// base styles
+body {
+	font-family: $ff-roboto;
+	font-size: $fs-400;
+	color: $colour-blue-800;
+
+	// demo purposes only
+	margin: $size-36 0;
+}
+
+// composition
+.container {
+	width: min(58rem, 100% - 2rem);
+	margin-inline: auto;
+}
+
+.even-columns {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	gap: var(--gap, $size-16);
+}
+
+// Utilities
+
+.margin-block-xl {
+	margin-block: $size-36;
+}
+
+.fw-bold {
+	font-weight: $fw-700;
+}
+.fw-black {
+	font-weight: $fw-900;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-accent {
+	color: $colour-red-500;
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.page-title {
+	font-size: $fs-700;
+	font-weight: $fw-900;
+}
+
+// Blocks
+.card {
+	$parent: &;
+	border-radius: $size-32;
+	overflow: hidden;
+	background-color: $colour-neutral-100;
+	@extend %shadow;
+
+	&[data-type="product"] {
+		h2 {
+			font-size: $fs-600;
+			font-weight: $fw-900;
+			text-transform: uppercase;
+		}
+
+		#{$parent}__content {
+			padding: $size-32 $size-16 $size-16;
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: $size-8;
+			position: relative;
+		}
+
+		.button {
+			position: absolute;
+			top: 0;
+			transform: translateY(-50%);
+			right: $size-16;
+		}
+	}
+
+	&[data-type="link-with-image"] {
+		text-decoration: none;
+		color: $colour-red-500;
+		#{$parent} {
+			&__content {
+				padding: $size-16 $size-12;
+			}
+		}
+		img {
+			height: 8.75rem;
+			width: 100%;
+			object-fit: cover;
+			object-position: top center;
+		}
+		@include interactive-scale($colour-neutral-100, $colour-blue-800, 1);
+		transition: background-color 500ms ease, color 500ms ease;
+	}
+}
+
+.button {
+	display: inline-block;
+	border: 0;
+	text-decoration: none;
+	cursor: pointer;
+	padding: $size-16;
+	background-color: $colour-red-400;
+	color: $colour-neutral-100;
+	border-radius: 100vw;
+	@extend %shadow;
+	@include interactive-scale($colour-neutral-100, $colour-red-500);
+}
