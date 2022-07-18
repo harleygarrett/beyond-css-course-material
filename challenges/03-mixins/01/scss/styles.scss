@@ -1,11 +1,81 @@
+// mixins
+@mixin gradient($deg, $colour-1, $colour-2) {
+	background-image: linear-gradient($deg, $colour-1, $colour-2);
+}
+
+@mixin pseudo-underline($width, $height, $bg-color, $margin) {
+	&:after {
+		content: "";
+		display: block;
+		width: $width;
+		height: $height;
+		background-color: $bg-color;
+		margin: $margin auto;
+	}
+}
+
+@mixin ui-element(
+	$size,
+	$colour,
+	$bg-colour,
+	$hover-colour: $colour,
+	$hover-bg-colour: $bg-colour
+) {
+	display: inline-block;
+	padding: $size calc($size * 3);
+	color: $colour;
+	background-color: $bg-colour;
+	&:hover,
+	&:focus {
+		color: $hover-colour;
+		background-color: $hover-bg-colour;
+	}
+}
+
+// styles
 body {
-  font-family: system-ui;
-  margin: 0;
+	font-family: system-ui;
+	margin: 0;
 }
 
 .section-one,
 .section-two,
 .section-three {
-  text-align: center;
-  padding: 10vh 0;
+	text-align: center;
+	padding: 10vh 0;
+}
+
+.section {
+	&-one {
+		@include gradient(40deg, yellow, pink);
+	}
+	&-two {
+		@include gradient(80deg, yellow, lavender);
+	}
+
+	&-three {
+		@include gradient(120deg, yellow, magenta);
+	}
+}
+
+.title {
+	@include pseudo-underline(4em, 0.125em, yellow, 1em);
+}
+
+.button {
+	&-one {
+		@include ui-element(0.5em, black, yellow, magenta, pink);
+	}
+	&-two {
+		@include ui-element(0.5em, black, yellow, lavender, magenta);
+	}
+}
+
+.badge {
+	&-one {
+		@include ui-element(0.25em, lavender, magenta);
+	}
+	&-two {
+		@include ui-element(0.25em, magenta, pink);
+	}
 }
