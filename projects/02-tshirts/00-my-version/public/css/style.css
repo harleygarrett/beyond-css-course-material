@@ -1,0 +1,140 @@
+.button, .card {
+  box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 1.125rem;
+  color: hsl(216deg, 71%, 16%);
+  margin: 3rem 0;
+}
+
+.container {
+  width: min(58rem, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.even-columns {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: var(--gap, 1rem);
+}
+
+.margin-block-xl {
+  margin-block: 3rem;
+}
+
+.fw-bold {
+  font-weight: 700;
+}
+
+.fw-black {
+  font-weight: 900;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-accent {
+  color: hsl(357deg, 74%, 40%);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.page-title {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.card {
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: hsl(0deg, 0%, 100%);
+}
+.card[data-type=product] h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.card[data-type=product] .card__content {
+  padding: 2rem 1rem 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem;
+  position: relative;
+}
+.card[data-type=product] .button {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  right: 1rem;
+}
+.card[data-type=link-with-image] {
+  text-decoration: none;
+  color: hsl(357deg, 74%, 40%);
+  scale: 1;
+  transition: scale 350ms ease;
+  transition: background-color 500ms ease, color 500ms ease;
+}
+.card[data-type=link-with-image] .card__content {
+  padding: 1rem 0.75rem;
+}
+.card[data-type=link-with-image] img {
+  height: 8.75rem;
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.card[data-type=link-with-image]:hover, .card[data-type=link-with-image]:focus {
+  scale: 1;
+  color: hsl(0deg, 0%, 100%);
+  background-color: hsl(216deg, 71%, 16%);
+}
+
+.button {
+  display: inline-block;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: hsl(357deg, 100%, 68%);
+  color: hsl(0deg, 0%, 100%);
+  border-radius: 100vw;
+  scale: 1;
+  transition: scale 350ms ease;
+}
+.button:hover, .button:focus {
+  scale: 1.05;
+  color: hsl(0deg, 0%, 100%);
+  background-color: hsl(357deg, 74%, 40%);
+}
+
+/*# sourceMappingURL=style.css.map */
